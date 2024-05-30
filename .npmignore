@@ -1,0 +1,12 @@
+# Directories
+node_modules
+src
+.github
+
+# Other
+.eslintrc
+.nvmrc
+.prettierrc
+jest.config.ts
+rollup.config.ts
+tsconfig.json
