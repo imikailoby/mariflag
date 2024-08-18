@@ -3,7 +3,7 @@ import { getSvgSizes } from './getSvgSizes';
 import { prepareSvgChildren } from './prepareSvgChildren';
 
 export function buildSvg(svgFlagsArray: string[], config: Required<MarineCodeConfig>): string {
-  const { width, height } = getSvgSizes(svgFlagsArray.length, config.orientation, config.offset);
+  const { width, height } = getSvgSizes(svgFlagsArray, config.orientation, config.offset);
   const svgContent = generateSvgContent(svgFlagsArray, config.orientation, config.offset);
   return createSvgElement(width, height, svgContent);
 }

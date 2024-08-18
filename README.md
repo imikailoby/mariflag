@@ -44,7 +44,7 @@ generateMarineCode("string", {
 
 Supported parameters:
 
-| Parameter              | Values                   | Default     | Description                                         |
+| Parameter              | Values                                 | Default          | Description                      |
 | ---------------------- | -------------------------------------- | ---------------- | -------------------------------- |
 | `orientation` (string) | 'horizontal'\|'vertical'               | **'horizontal'** | Specifies the flag's orientation |
 | `offset` (number)      | non-negative integers (including zero) | **16**           | Specifies the offset in pixels   |
