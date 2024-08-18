@@ -5,11 +5,11 @@ import {
   DEFAULT_F_SVG_V_OFFSET,
   DEFAULT_F_SVG_V_WIDTH,
 } from '../constants/sizes';
-import type { MarineCodeConfig } from '../types/config';
+import type { Orientation } from '../types/config';
 
 export function getSvgSizes(
   elementsCount: number,
-  orientation: MarineCodeConfig['orientation'],
+  orientation: Orientation,
 ): {
   width: number;
   height: number;
@@ -20,13 +20,13 @@ export function getSvgSizes(
   return { width, height };
 }
 
-function getSvgWidth(elementsCount: number, orientation: MarineCodeConfig['orientation']): number {
+function getSvgWidth(elementsCount: number, orientation: Orientation): number {
   return orientation === 'horizontal'
     ? calculateSvgDimension(elementsCount, DEFAULT_F_SVG_H_WIDTH, DEFAULT_F_SVG_H_OFFSET)
     : DEFAULT_F_SVG_V_WIDTH;
 }
 
-function getSvgHeight(elementsCount: number, orientation: MarineCodeConfig['orientation']): number {
+function getSvgHeight(elementsCount: number, orientation: Orientation): number {
   return orientation === 'vertical'
     ? calculateSvgDimension(elementsCount, DEFAULT_F_SVG_V_HEIGHT, DEFAULT_F_SVG_V_OFFSET)
     : DEFAULT_F_SVG_H_WIDTH;

@@ -1,14 +1,14 @@
-import type { MarineCodeConfig } from '../types/config';
+import type { MarineCodeConfig, Orientation } from '../types/config';
 import { getSvgSizes } from './getSvgSizes';
 import { prepareSvgChildren } from './prepareSvgChildren';
 
-export function buildSvg(svgFlagsArray: string[], config: MarineCodeConfig): string {
+export function buildSvg(svgFlagsArray: string[], config: Required<MarineCodeConfig>): string {
   const { width, height } = getSvgSizes(svgFlagsArray.length, config.orientation);
   const svgContent = generateSvgContent(svgFlagsArray, config.orientation);
   return createSvgElement(width, height, svgContent);
 }
 
-function generateSvgContent(svgFlagsArray: string[], orientation: MarineCodeConfig['orientation']): string {
+function generateSvgContent(svgFlagsArray: string[], orientation: Orientation): string {
   return prepareSvgChildren(svgFlagsArray, orientation).join('');
 }
 

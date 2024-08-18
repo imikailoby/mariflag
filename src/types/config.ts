@@ -1,3 +1,5 @@
 export interface MarineCodeConfig {
-  orientation: 'horizontal' | 'vertical';
+  orientation?: Orientation;
 }
+
+export type Orientation = 'horizontal' | 'vertical';

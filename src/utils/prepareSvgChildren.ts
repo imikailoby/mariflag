@@ -4,32 +4,28 @@ import {
   DEFAULT_F_SVG_V_HEIGHT,
   DEFAULT_F_SVG_V_OFFSET,
 } from '../constants/sizes';
-import type { MarineCodeConfig } from '../types/config';
+import type { Orientation } from '../types/config';
 
 const INITIAL_OFFSET = 0;
 
-export function prepareSvgChildren(elements: string[], orientation: MarineCodeConfig['orientation']): string[] {
+export function prepareSvgChildren(elements: string[], orientation: Orientation): string[] {
   return elements.map((e, i) => applyTransformToSvgElement(e, i, orientation));
 }
 
-function applyTransformToSvgElement(
-  element: string,
-  index: number,
-  orientation: MarineCodeConfig['orientation'],
-): string {
+function applyTransformToSvgElement(element: string, index: number, orientation: Orientation): string {
   const hOffset = getHorizontalOffset(index, orientation);
   const wOffset = getVerticalOffset(index, orientation);
 
   return wrapSvgWithTransform(element, hOffset, wOffset);
 }
 
-function getHorizontalOffset(index: number, orientation: MarineCodeConfig['orientation']): number {
+function getHorizontalOffset(index: number, orientation: Orientation): number {
   return orientation === 'horizontal'
     ? calculateOffset(index, DEFAULT_F_SVG_H_WIDTH, DEFAULT_F_SVG_H_OFFSET)
     : INITIAL_OFFSET;
 }
 
-function getVerticalOffset(index: number, orientation: MarineCodeConfig['orientation']): number {
+function getVerticalOffset(index: number, orientation: Orientation): number {
   return orientation === 'vertical'
     ? calculateOffset(index, DEFAULT_F_SVG_V_HEIGHT, DEFAULT_F_SVG_V_OFFSET)
     : INITIAL_OFFSET;
