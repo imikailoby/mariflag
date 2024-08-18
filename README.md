@@ -37,12 +37,14 @@ Provide a custom configuration as a second argument to override the default para
 ```ts
 generateMarineCode("string", {
     orientation: "horizontal",
+    offset: 16,
     ...
   });
 ```
 
 Supported parameters:
 
-| Parameter     | Values                   | Default          | Description                      |
-| ------------- | ------------------------ | ---------------- | -------------------------------- |
-| `orientation` | 'horizontal'\|'vertical' | **'horizontal'** | Specifies the flag's orientation |
+| Parameter              | Values                   | Default     | Description                                         |
+| ---------------------- | -------------------------------------- | ---------------- | -------------------------------- |
+| `orientation` (string) | 'horizontal'\|'vertical'               | **'horizontal'** | Specifies the flag's orientation |
+| `offset` (number)      | non-negative integers (including zero) | **16**           | Specifies the offset in pixels   |
