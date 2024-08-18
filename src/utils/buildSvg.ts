@@ -3,13 +3,13 @@ import { getSvgSizes } from './getSvgSizes';
 import { prepareSvgChildren } from './prepareSvgChildren';
 
 export function buildSvg(svgFlagsArray: string[], config: Required<MarineCodeConfig>): string {
-  const { width, height } = getSvgSizes(svgFlagsArray.length, config.orientation);
-  const svgContent = generateSvgContent(svgFlagsArray, config.orientation);
+  const { width, height } = getSvgSizes(svgFlagsArray.length, config.orientation, config.offset);
+  const svgContent = generateSvgContent(svgFlagsArray, config.orientation, config.offset);
   return createSvgElement(width, height, svgContent);
 }
 
-function generateSvgContent(svgFlagsArray: string[], orientation: Orientation): string {
-  return prepareSvgChildren(svgFlagsArray, orientation).join('');
+function generateSvgContent(svgFlagsArray: string[], orientation: Orientation, offset: number): string {
+  return prepareSvgChildren(svgFlagsArray, orientation, offset).join('');
 }
 
 function createSvgElement(width: number, height: number, content: string): string {

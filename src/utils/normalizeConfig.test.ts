@@ -5,6 +5,7 @@ describe('normalizeConfig()', () => {
   it('returns default config when no config is provided', () => {
     expect(normalizeConfig()).toEqual({
       orientation: 'horizontal',
+      offset: 16,
     });
   });
 
@@ -21,6 +22,22 @@ describe('normalizeConfig()', () => {
     it('returns provided orientation', () => {
       expect(normalizeConfig({ orientation: 'vertical' }).orientation).toBe('vertical');
       expect(normalizeConfig({ orientation: 'horizontal' }).orientation).toBe('horizontal');
+    });
+  });
+
+  describe('offset', () => {
+    it('returns default offset when no offset is provided', () => {
+      expect(normalizeConfig({}).offset).toBe(16);
+      expect(normalizeConfig(undefined).offset).toBe(16);
+    });
+
+    it('returns default offset when invalid offset is provided', () => {
+      expect(normalizeConfig({ offset: -1 }).offset).toBe(16);
+    });
+
+    it('returns provided offset', () => {
+      expect(normalizeConfig({ offset: 32 }).offset).toBe(32);
+      expect(normalizeConfig({ offset: 0 }).offset).toBe(0);
     });
   });
 });
