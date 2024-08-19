@@ -38,6 +38,9 @@ Provide a custom configuration as a second argument to override the default para
 generateMarineCode("string", {
     orientation: "horizontal",
     offset: 16,
+    customIcons: {
+      M: '<svg width="60" height="120">...</svg>'
+    }
     ...
   });
 ```
@@ -48,3 +51,30 @@ Supported parameters:
 | ---------------------- | -------------------------------------- | ---------------- | -------------------------------- |
 | `orientation` (string) | 'horizontal'\|'vertical'               | **'horizontal'** | Specifies the flag's orientation |
 | `offset` (number)      | non-negative integers (including zero) | **16**           | Specifies the offset in pixels   |
+| `customIcons` (object) | _\*Check description below_            | N/A              | Provide custom icons per letter  |
+
+## Custom icons
+
+You can provide the custom icons associated with each letter according to your preferences. To do this, pass a
+`customIcons` object in the configuration, where each key is **a letter from A-Z** and the corresponding value is an
+SVG string. You can replace all default icons or just specific letters.
+
+#### Custom icon requirements
+
+The SVG must include both `width` and `height` attributes with **values greater than 0**. These dimensions are used to
+calculate the overall size of the output SVG, as well as the spacing between icons, etc. If any of these attributes are
+missing or have invalid values, the default icon for that letter will be used instead.
+
+Example:
+
+```ts
+{
+  A: '<svg width="60" height="120">...</svg>', // valid custom icon
+  B: '<svg width="60">...</svg>', // invalid (no height)
+  C: '<svg >...</svg>', // invalid (no width and height)
+  D: '<svg width="60" height="0">...</svg>', // invalid (height is 0)
+  ...
+}
+```
+
+You can view examples of the default icons [here](https://github.com/imikailoby/mariflag/blob/main/src/constants/defaultIcons.ts).
