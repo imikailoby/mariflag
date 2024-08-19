@@ -8,7 +8,7 @@ export function generateMarineCode(text: string, config?: MarineCodeConfig): str
   const preparedString = prepareString(text);
   if (!preparedString) return '';
 
-  const svgFlagsArray = getSvgArrayFromName(preparedString);
   const normalizedConfig = normalizeConfig(config);
+  const svgFlagsArray = getSvgArrayFromName(preparedString, normalizedConfig.customIcons);
   return buildSvg(svgFlagsArray, normalizedConfig);
 }

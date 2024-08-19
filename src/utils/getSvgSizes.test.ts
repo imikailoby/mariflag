@@ -1,33 +1,29 @@
 import { DEFAULT_CONFIG } from '../constants/config';
-import { svgFlagsByLetter } from '../constants/svgFlagsByLetter';
+import { defaultIcons } from '../constants/defaultIcons';
 import { getSvgSizes } from './getSvgSizes';
 
 describe('getSvgSizes()', () => {
   it('returns correct sizes for horizontal orientation', () => {
-    expect(
-      getSvgSizes([svgFlagsByLetter.A, svgFlagsByLetter.B, svgFlagsByLetter.C], 'horizontal', DEFAULT_CONFIG.offset),
-    ).toEqual({
+    expect(getSvgSizes([defaultIcons.A, defaultIcons.B, defaultIcons.C], 'horizontal', DEFAULT_CONFIG.offset)).toEqual({
       width: 48 * 3 + DEFAULT_CONFIG.offset * 2,
       height: 48,
     });
   });
 
   it('returns correct sizes for vertical orientation', () => {
-    expect(
-      getSvgSizes([svgFlagsByLetter.A, svgFlagsByLetter.B, svgFlagsByLetter.C], 'vertical', DEFAULT_CONFIG.offset),
-    ).toEqual({
+    expect(getSvgSizes([defaultIcons.A, defaultIcons.B, defaultIcons.C], 'vertical', DEFAULT_CONFIG.offset)).toEqual({
       width: 48,
       height: 48 * 3 + DEFAULT_CONFIG.offset * 2,
     });
   });
 
   it('returns correct sizes for custom offset', () => {
-    expect(getSvgSizes([svgFlagsByLetter.A, svgFlagsByLetter.B, svgFlagsByLetter.C], 'horizontal', 0)).toEqual({
+    expect(getSvgSizes([defaultIcons.A, defaultIcons.B, defaultIcons.C], 'horizontal', 0)).toEqual({
       width: 48 * 3,
       height: 48,
     });
 
-    expect(getSvgSizes([svgFlagsByLetter.A, svgFlagsByLetter.B, svgFlagsByLetter.C], 'vertical', 64)).toEqual({
+    expect(getSvgSizes([defaultIcons.A, defaultIcons.B, defaultIcons.C], 'vertical', 64)).toEqual({
       width: 48,
       height: 48 * 3 + 64 * 2,
     });

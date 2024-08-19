@@ -1,15 +1,17 @@
-import { svgFlagsByLetter } from '../constants/svgFlagsByLetter';
+import type { Alphabet } from '../types/config';
 
-export function getSvgArrayFromName(name: string): string[] {
+export function getSvgArrayFromName(name: string, icons: Record<Alphabet, string>): string[] {
   if (!name) return [];
 
-  return name.toUpperCase().split('').filter(isSvgLetter).map(getSvgForLetter);
+  return (name.toUpperCase().split('') as Alphabet[])
+    .filter((l) => isSvgLetter(l, icons))
+    .map((l) => getSvgForLetter(l, icons));
 }
 
-function isSvgLetter(letter: string): boolean {
-  return letter in svgFlagsByLetter;
+function isSvgLetter(letter: string, icons: Record<Alphabet, string>): boolean {
+  return letter in icons;
 }
 
-function getSvgForLetter(letter: string): string {
-  return svgFlagsByLetter[letter];
+function getSvgForLetter(letter: Alphabet, icons: Record<Alphabet, string>): string {
+  return icons[letter];
 }
