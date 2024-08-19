@@ -1,7 +1,7 @@
 {
   "name": "@imikailoby/mariflag",
   "version": "1.2.0",
-  "description": "International Maritime Signal Flags SVG generator",
+  "description": "Versatile SVG Generator for Custom Icon Sequences. Inspired by International Maritime Signal Flags",
   "author": "Mikhail Prosmitskiy",
   "repository": {
     "type": "git",

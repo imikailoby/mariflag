@@ -4,7 +4,7 @@ import { getSvgArrayFromName } from './getSvgArrayFromName';
 import { normalizeConfig } from './normalizeConfig';
 import { prepareString } from './prepareString';
 
-export function generateMarineCode(text: string, config?: MarineCodeConfig): string {
+export function generateSvg(text: string, config?: MarineCodeConfig): string {
   const preparedString = prepareString(text);
   if (!preparedString) return '';
 
