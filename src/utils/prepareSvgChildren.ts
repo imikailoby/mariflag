@@ -52,12 +52,12 @@ function applyCoordinatesForSvg(element: string, hOffset: number, wOffset: numbe
 }
 
 function updateCoordinate(element: string, coordinate: 'x' | 'y', offset: number): string {
-  const regex = new RegExp(`${coordinate}="[^"]*"`);
+  const regex = new RegExp(`(<svg[^>]*\\s)${coordinate}="[^"]*"`);
   const hasCoordinate = regex.test(element);
 
   if (hasCoordinate) {
-    return element.replace(regex, `${coordinate}="${offset}"`);
+    return element.replace(regex, `$1${coordinate}="${offset}"`);
   } else {
-    return element.replace(/<svg/, `<svg ${coordinate}="${offset}"`);
+    return element.replace(/^<svg/, `<svg ${coordinate}="${offset}"`);
   }
 }
