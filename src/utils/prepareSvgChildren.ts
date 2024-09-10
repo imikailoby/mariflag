@@ -21,7 +21,7 @@ function applyTransformToSvgElement(
   const hOffset = getOffset(index, orientation, offset, prevElements, 'horizontal');
   const wOffset = getOffset(index, orientation, offset, prevElements, 'vertical');
 
-  return wrapSvgWithTransform(element, hOffset, wOffset);
+  return applyCoordinatesForSvg(element, hOffset, wOffset);
 }
 
 function getOffset(
@@ -45,6 +45,19 @@ function calculateOffset(index: number, offset: number, prevElements: string[], 
   }, 0);
 }
 
-function wrapSvgWithTransform(element: string, hOffset: number, wOffset: number): string {
-  return `<g transform="translate(${hOffset}, ${wOffset})">${element}</g>`;
+function applyCoordinatesForSvg(element: string, hOffset: number, wOffset: number): string {
+  element = updateCoordinate(element, 'y', wOffset);
+  element = updateCoordinate(element, 'x', hOffset);
+  return element;
+}
+
+function updateCoordinate(element: string, coordinate: 'x' | 'y', offset: number): string {
+  const regex = new RegExp(`${coordinate}="[^"]*"`);
+  const hasCoordinate = regex.test(element);
+
+  if (hasCoordinate) {
+    return element.replace(regex, `${coordinate}="${offset}"`);
+  } else {
+    return element.replace(/<svg/, `<svg ${coordinate}="${offset}"`);
+  }
 }

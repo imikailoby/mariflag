@@ -78,7 +78,7 @@ Example:
 {
   A: '<svg width="60" height="120">...</svg>', // valid custom icon
   B: '<svg width="60">...</svg>', // invalid (no height)
-  C: '<svg >...</svg>', // invalid (no width and height)
+  C: '<svg>...</svg>', // invalid (no width and height)
   D: '<svg width="60" height="0">...</svg>', // invalid (height is 0)
   ...
 }

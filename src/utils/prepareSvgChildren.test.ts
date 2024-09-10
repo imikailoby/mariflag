@@ -7,27 +7,27 @@ describe('prepareSvgChildren()', () => {
   it('returns an array with SVG elements with a correct offset for the horizontal orientation', () => {
     const result = prepareSvgChildren(ELEMENTS, 'horizontal', DEFAULT_CONFIG.offset);
     expect(result).toEqual([
-      '<g transform="translate(0, 0)"><svg width="48" height="48"/></g>',
-      '<g transform="translate(64, 0)"><svg width="48" height="48"/></g>',
-      '<g transform="translate(128, 0)"><svg width="48" height="48"/></g>',
+      '<svg x="0" y="0" width="48" height="48"/>',
+      '<svg x="64" y="0" width="48" height="48"/>',
+      '<svg x="128" y="0" width="48" height="48"/>',
     ]);
   });
 
   it('returns an array with SVG elements with a correct offset for the vertical orientation', () => {
     const result = prepareSvgChildren(ELEMENTS, 'vertical', DEFAULT_CONFIG.offset);
     expect(result).toEqual([
-      '<g transform="translate(0, 0)"><svg width="48" height="48"/></g>',
-      '<g transform="translate(0, 64)"><svg width="48" height="48"/></g>',
-      '<g transform="translate(0, 128)"><svg width="48" height="48"/></g>',
+      '<svg x="0" y="0" width="48" height="48"/>',
+      '<svg x="0" y="64" width="48" height="48"/>',
+      '<svg x="0" y="128" width="48" height="48"/>',
     ]);
   });
 
   it('sets correct custom offset', () => {
     const result = prepareSvgChildren(ELEMENTS, 'horizontal', 0);
     expect(result).toEqual([
-      '<g transform="translate(0, 0)"><svg width="48" height="48"/></g>',
-      '<g transform="translate(48, 0)"><svg width="48" height="48"/></g>',
-      '<g transform="translate(96, 0)"><svg width="48" height="48"/></g>',
+      '<svg x="0" y="0" width="48" height="48"/>',
+      '<svg x="48" y="0" width="48" height="48"/>',
+      '<svg x="96" y="0" width="48" height="48"/>',
     ]);
   });
 
@@ -39,15 +39,15 @@ describe('prepareSvgChildren()', () => {
     ];
     const resultHorizontal = prepareSvgChildren(customElements, 'horizontal', DEFAULT_CONFIG.offset);
     expect(resultHorizontal).toEqual([
-      '<g transform="translate(0, 0)"><svg width="48" height="48"/></g>',
-      '<g transform="translate(64, 0)"><svg width="96" height="96"/></g>',
-      '<g transform="translate(176, 0)"><svg width="24" height="24"/></g>',
+      '<svg x="0" y="0" width="48" height="48"/>',
+      '<svg x="64" y="0" width="96" height="96"/>',
+      '<svg x="176" y="0" width="24" height="24"/>',
     ]);
     const resultVertical = prepareSvgChildren(customElements, 'vertical', DEFAULT_CONFIG.offset);
     expect(resultVertical).toEqual([
-      '<g transform="translate(0, 0)"><svg width="48" height="48"/></g>',
-      '<g transform="translate(0, 64)"><svg width="96" height="96"/></g>',
-      '<g transform="translate(0, 176)"><svg width="24" height="24"/></g>',
+      '<svg x="0" y="0" width="48" height="48"/>',
+      '<svg x="0" y="64" width="96" height="96"/>',
+      '<svg x="0" y="176" width="24" height="24"/>',
     ]);
   });
 });
