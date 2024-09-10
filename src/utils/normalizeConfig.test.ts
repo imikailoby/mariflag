@@ -1,6 +1,6 @@
-import { DEFAULT_CONFIG } from '../constants/config';
+import { DEFAULT_SVG_CONFIG } from '../config/svgConfig';
 import { defaultIcons } from '../constants/defaultIcons';
-import type { Alphabet, Orientation } from '../types/config';
+import type { Alphabet, SvgOrientation } from '../types/config';
 import { normalizeConfig } from './normalizeConfig';
 
 describe('normalizeConfig()', () => {
@@ -19,7 +19,7 @@ describe('normalizeConfig()', () => {
     });
 
     it('returns default orientation when invalid orientation is provided', () => {
-      expect(normalizeConfig({ orientation: 'invalid' as unknown as Orientation }).orientation).toBe('horizontal');
+      expect(normalizeConfig({ orientation: 'invalid' as unknown as SvgOrientation }).orientation).toBe('horizontal');
     });
 
     it('returns provided orientation', () => {
@@ -49,8 +49,8 @@ describe('normalizeConfig()', () => {
     it('returns default icons when no custom icons are provided', () => {
       expect(normalizeConfig({}).customIcons).toEqual(defaultIcons);
       expect(normalizeConfig(undefined).customIcons).toEqual(defaultIcons);
-      expect(normalizeConfig({ ...DEFAULT_CONFIG, customIcons: undefined }).customIcons).toEqual(defaultIcons);
-      expect(normalizeConfig({ ...DEFAULT_CONFIG, customIcons: {} }).customIcons).toEqual(defaultIcons);
+      expect(normalizeConfig({ ...DEFAULT_SVG_CONFIG, customIcons: undefined }).customIcons).toEqual(defaultIcons);
+      expect(normalizeConfig({ ...DEFAULT_SVG_CONFIG, customIcons: {} }).customIcons).toEqual(defaultIcons);
     });
 
     it('replaces invalid icons with default icons', () => {

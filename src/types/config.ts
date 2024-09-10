@@ -1,10 +1,10 @@
-export interface MarineCodeConfig {
-  orientation?: Orientation;
+export interface SvgImageConfig {
+  orientation?: SvgOrientation;
   offset?: number;
   customIcons?: Partial<Record<Alphabet, string>>;
 }
 
-export type Orientation = 'horizontal' | 'vertical';
+export type SvgOrientation = 'horizontal' | 'vertical';
 
 export type Alphabet =
   | 'A'

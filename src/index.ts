@@ -1,2 +1,2 @@
 export { generateSvg } from './utils/generateSvg';
-export type { MarineCodeConfig } from './types/config';
+export type { SvgImageConfig } from './types/config';

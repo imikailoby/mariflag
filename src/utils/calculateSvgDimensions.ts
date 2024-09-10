@@ -1,8 +1,8 @@
 import type { Sizes } from '../types/common';
-import type { Orientation } from '../types/config';
+import type { SvgOrientation } from '../types/config';
 import { extractElementSizes } from './extractElementSizes';
 
-export function getSvgSizes(elements: string[], orientation: Orientation, offset: number): Sizes {
+export function calculateSvgDimensions(elements: string[], orientation: SvgOrientation, offset: number): Sizes {
   const { totalWidth, totalHeight, maxElementWidth, maxElementHeight } = calculateDimensions(elements);
 
   const width = getSvgDimension(elements.length, orientation, offset, totalWidth, maxElementWidth, 'horizontal');
@@ -39,11 +39,11 @@ function calculateDimensions(elements: string[]): {
 
 function getSvgDimension(
   elementsCount: number,
-  orientation: Orientation,
+  orientation: SvgOrientation,
   offset: number,
   totalDimension: number,
   maxElementDimension: number,
-  direction: Orientation,
+  direction: SvgOrientation,
 ): number {
   return orientation === direction ? calculateSvgDimension(elementsCount, totalDimension, offset) : maxElementDimension;
 }

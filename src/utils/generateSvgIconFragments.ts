@@ -1,10 +1,10 @@
-import type { Orientation } from '../types/config';
+import type { SvgOrientation } from '../types/config';
 import type { Dimension } from '../types/common';
 import { extractElementSizes } from './extractElementSizes';
 
 const INITIAL_OFFSET = 0;
 
-export function prepareSvgChildren(elements: string[], orientation: Orientation, offset: number): string[] {
+export function generateSvgIconFragments(elements: string[], orientation: SvgOrientation, offset: number): string[] {
   return elements.map((e, i, arr) => {
     const prevElements = arr.slice(0, i);
     return applyTransformToSvgElement(e, i, orientation, offset, prevElements);
@@ -14,7 +14,7 @@ export function prepareSvgChildren(elements: string[], orientation: Orientation,
 function applyTransformToSvgElement(
   element: string,
   index: number,
-  orientation: Orientation,
+  orientation: SvgOrientation,
   offset: number,
   prevElements: string[],
 ): string {
@@ -26,10 +26,10 @@ function applyTransformToSvgElement(
 
 function getOffset(
   index: number,
-  orientation: Orientation,
+  orientation: SvgOrientation,
   offset: number,
   prevElements: string[],
-  direction: Orientation,
+  direction: SvgOrientation,
 ): number {
   const dimension = direction === 'horizontal' ? 'width' : 'height';
   return orientation === direction ? calculateOffset(index, offset, prevElements, dimension) : INITIAL_OFFSET;
