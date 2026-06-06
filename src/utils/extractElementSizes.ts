@@ -8,7 +8,9 @@ export function extractElementSizes(element: string): Sizes {
 }
 
 function extractElementDimension(element: string, dimension: Dimension): number {
-  const regex = new RegExp(`${dimension}="(\\d+)"`);
+  // Anchor on a tag/whitespace boundary so attributes like `stroke-width` are
+  // not mistaken for `width`.
+  const regex = new RegExp(`(?:^|\\s)${dimension}="(\\d+)"`);
   const match = element.match(regex);
   return match ? parseInt(match[1], 10) : 0;
 }

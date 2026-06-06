@@ -20,4 +20,9 @@ describe('extractElementSizes()', () => {
     const result3 = extractElementSizes(element3);
     expect(result3).toEqual({ width: 10, height: 0 });
   });
+
+  it('ignores suffixed attributes such as stroke-width', () => {
+    const element = '<svg stroke-width="2" width="100" height="50" />';
+    expect(extractElementSizes(element)).toEqual({ width: 100, height: 50 });
+  });
 });

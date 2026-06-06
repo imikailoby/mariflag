@@ -1,11 +1,11 @@
 import { DEFAULT_CONFIG } from '../constants/config';
 import { defaultIcons } from '../constants/defaultIcons';
-import type { Alphabet, MarineCodeConfig } from '../types/config';
+import type { Alphabet, MariflagConfig } from '../types/config';
 import { extractElementSizes } from './extractElementSizes';
 
 export function normalizeConfig(
-  config?: MarineCodeConfig,
-): Omit<Required<MarineCodeConfig>, 'customIcons'> & { customIcons: Record<Alphabet, string> } {
+  config?: MariflagConfig,
+): Omit<Required<MariflagConfig>, 'customIcons'> & { customIcons: Record<Alphabet, string> } {
   return {
     orientation: getValidValue(config?.orientation, ['horizontal', 'vertical'], DEFAULT_CONFIG.orientation),
     offset: getValidNumber(config?.offset, DEFAULT_CONFIG.offset),
@@ -24,26 +24,17 @@ function getValidNumber(value: number | undefined, defaultValue: number): number
 function getValidIcons(value?: Partial<Record<Alphabet, string>>): Record<Alphabet, string> {
   if (!value || Object.keys(value).length === 0) return defaultIcons;
 
-  return Object.keys(defaultIcons).reduce(
+  return (Object.keys(defaultIcons) as Alphabet[]).reduce(
     (acc, key) => {
-      if (key.length === 1 && key.toUpperCase() === key) {
-        const svg = value?.[key as Alphabet];
-        const defaultSvg = defaultIcons[key as Alphabet];
-
-        if (!svg) {
-          acc[key as Alphabet] = defaultSvg;
-          return acc;
-        }
-
-        const { width, height } = extractElementSizes(svg);
-        if (!!width && !!height) {
-          acc[key as Alphabet] = svg;
-        } else {
-          acc[key as Alphabet] = defaultSvg;
-        }
-      }
+      const icon = value[key];
+      acc[key] = icon && isValidIcon(icon) ? icon : defaultIcons[key];
       return acc;
     },
     {} as Record<Alphabet, string>,
   );
+}
+
+function isValidIcon(svg: string): boolean {
+  const { width, height } = extractElementSizes(svg);
+  return width > 0 && height > 0;
 }
