@@ -1,9 +1,6 @@
-# Directories
 node_modules
 dist
 coverage
-.temp
 demo/vendor
-
-# Other
-.DS_Store
+.temp
+package-lock.json

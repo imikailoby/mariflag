@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>mariflag — encode text into maritime signal-flag SVGs</title>
+    <meta
+      name="description"
+      content="mariflag is a zero-dependency TypeScript library that turns text into a single SVG of International Maritime Signal Flags — or your own custom icons. Try it live and download the result."
+    />
+    <meta name="author" content="Mikhail Prosmitskiy" />
+    <link rel="canonical" href="https://imikailoby.github.io/mariflag/" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' fill='%23002bfd'/%3E%3Cpath d='M0 0h24v48H0z' fill='%23fff'/%3E%3C/svg%3E"
+    />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0e1014" media="(prefers-color-scheme: dark)" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="mariflag — text to maritime signal-flag SVGs" />
+    <meta
+      property="og:description"
+      content="Turn text into a single SVG of signal flags, or your own custom icons. Try it live and download the SVG."
+    />
+    <meta property="og:url" content="https://imikailoby.github.io/mariflag/" />
+    <meta name="twitter:card" content="summary" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareSourceCode",
+        "name": "mariflag",
+        "description": "A zero-dependency TypeScript library that turns text into a single SVG of maritime signal flags, or your own custom icons.",
+        "url": "https://imikailoby.github.io/mariflag/",
+        "codeRepository": "https://github.com/imikailoby/mariflag",
+        "programmingLanguage": "TypeScript",
+        "license": "https://opensource.org/licenses/MIT",
+        "author": {
+          "@type": "Person",
+          "name": "Mikhail Prosmitskiy",
+          "url": "https://imikailoby.com"
+        }
+      }
+    </script>
+
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="wrap hero-inner">
+        <p class="eyebrow">TypeScript · zero runtime dependencies</p>
+        <h1 class="logo">mariflag</h1>
+        <p class="tagline">
+          Turn text into a single SVG of
+          <a href="https://en.wikipedia.org/wiki/International_maritime_signal_flags" target="_blank" rel="noopener"
+            >maritime signal flags</a
+          >
+          — or your own custom icons.
+        </p>
+        <nav class="cta" aria-label="Project links">
+          <a
+            class="btn btn--primary"
+            href="https://www.npmjs.com/package/@imikailoby/mariflag"
+            target="_blank"
+            rel="noopener"
+          >
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path
+                fill="currentColor"
+                d="M0 7.334v8h6.666v1.332H12v-1.332h12v-8H0zm6.666 6.664H5.334v-4H4v4H1.334V8.667h5.332v5.331zm4 0v1.336H8V8.667h5.334v5.331h-2.668zm12.001 0h-1.336v-4h-1.33v4h-1.336v-4h-1.334v4h-2.668V8.667h8.004v5.331z"
+              />
+            </svg>
+            npm
+          </a>
+          <a class="btn" href="https://github.com/imikailoby/mariflag" target="_blank" rel="noopener">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path
+                fill="currentColor"
+                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+              />
+            </svg>
+            GitHub
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="demo card" aria-labelledby="demo-heading">
+        <h2 id="demo-heading">Try it</h2>
+        <p class="demo-note">
+          This is a live demo using the default maritime signal flags. In your own project you can pass
+          <strong>any</strong> SVG icons per letter via
+          <a href="https://github.com/imikailoby/mariflag#custom-icons" target="_blank" rel="noopener"
+            ><code>customIcons</code></a
+          >
+          — semaphore, Morse, Braille, emoji, anything. The result updates as you type.
+        </p>
+
+        <form id="generator" class="controls">
+          <div class="field field--text">
+            <label for="text">Text</label>
+            <input id="text" name="text" type="text" value="MARIFLAG" autocomplete="off" spellcheck="false" autofocus />
+            <p class="hint">Only <code>A–Z</code> letters are encoded; everything else is ignored.</p>
+          </div>
+
+          <div class="controls-row">
+            <fieldset class="field field--orientation">
+              <legend>Orientation</legend>
+              <div class="choices">
+                <label class="choice">
+                  <input type="radio" name="orientation" value="horizontal" checked /> Horizontal
+                </label>
+                <label class="choice"> <input type="radio" name="orientation" value="vertical" /> Vertical </label>
+              </div>
+            </fieldset>
+
+            <div class="field">
+              <label for="offset">Offset (px)</label>
+              <input id="offset" name="offset" type="number" min="0" step="1" value="16" inputmode="numeric" />
+            </div>
+          </div>
+        </form>
+
+        <section class="result" aria-labelledby="result-heading">
+          <div class="result-head">
+            <h3 id="result-heading">Result</h3>
+            <a id="download" class="btn btn--small" download="mariflag.svg" hidden>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"
+                />
+              </svg>
+              Download SVG
+            </a>
+          </div>
+          <div id="preview" class="preview"></div>
+          <p id="status" class="visually-hidden" role="status" aria-live="polite"></p>
+        </section>
+      </section>
+
+      <section class="about" aria-labelledby="about-heading">
+        <h2 id="about-heading">About</h2>
+        <p>
+          <strong>mariflag</strong> is a versatile SVG generator that converts text sequences into a series of icons.
+          While originally inspired by
+          <a href="https://en.wikipedia.org/wiki/International_maritime_signal_flags" target="_blank" rel="noopener"
+            >maritime signal flags</a
+          >, it also lets you provide your own custom SVG icons for each letter — encoding text into various visual
+          forms, limited only by your imagination (and the available SVG icons, of course).
+        </p>
+        <p>
+          For example, you can create visualizations inspired by
+          <a href="https://en.wikipedia.org/wiki/Optical_telegraph" target="_blank" rel="noopener">semaphore signals</a
+          >, or encode text into designs similar to
+          <a href="https://en.wikipedia.org/wiki/Morse_code" target="_blank" rel="noopener">Morse code</a> or
+          <a href="https://en.wikipedia.org/wiki/Braille" target="_blank" rel="noopener">Braille</a> — and more.
+        </p>
+        <ul class="features">
+          <li>Single composed SVG out; ships ESM + CJS + types</li>
+          <li>Bring your own icons via <code>customIcons</code></li>
+          <li>Horizontal or vertical layout with configurable spacing</li>
+        </ul>
+      </section>
+
+      <section class="usage" aria-labelledby="install-heading">
+        <h2 id="install-heading">Install &amp; use</h2>
+        <pre><code>npm install @imikailoby/mariflag</code></pre>
+        <pre><code>import { generateSvg } from '@imikailoby/mariflag';
+
+const svg = generateSvg('Hello', { orientation: 'horizontal', offset: 16 });</code></pre>
+        <p>
+          Full configuration and custom-icon docs are in the
+          <a href="https://github.com/imikailoby/mariflag#readme" target="_blank" rel="noopener">project README</a>.
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>MIT © <a href="https://imikailoby.com" target="_blank" rel="noopener">Mikhail Prosmitskiy</a></p>
+      </div>
+    </footer>
+
+    <script src="./vendor/index.global.js"></script>
+    <script src="./app.js" defer></script>
+  </body>
+</html>

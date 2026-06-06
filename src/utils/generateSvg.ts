@@ -1,10 +1,10 @@
-import type { MarineCodeConfig } from '../types/config';
+import type { MariflagConfig } from '../types/config';
 import { buildSvg } from './buildSvg';
 import { getSvgArrayFromName } from './getSvgArrayFromName';
 import { normalizeConfig } from './normalizeConfig';
 import { prepareString } from './prepareString';
 
-export function generateSvg(text: string, config?: MarineCodeConfig): string {
+export function generateSvg(text: string, config?: MariflagConfig): string {
   const preparedString = prepareString(text);
   if (!preparedString) return '';
 

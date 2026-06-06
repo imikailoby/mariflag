@@ -1,4 +1,4 @@
-export interface MarineCodeConfig {
+export interface MariflagConfig {
   orientation?: Orientation;
   offset?: number;
   customIcons?: Partial<Record<Alphabet, string>>;

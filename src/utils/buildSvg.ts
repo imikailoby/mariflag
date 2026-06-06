@@ -1,15 +1,17 @@
-import type { MarineCodeConfig, Orientation } from '../types/config';
+import type { MariflagConfig, Orientation } from '../types/config';
 import { getSvgSizes } from './getSvgSizes';
+import { namespaceSvgIds } from './namespaceSvgIds';
 import { prepareSvgChildren } from './prepareSvgChildren';
 
-export function buildSvg(svgFlagsArray: string[], config: Required<MarineCodeConfig>): string {
+export function buildSvg(svgFlagsArray: string[], config: Required<MariflagConfig>): string {
   const { width, height } = getSvgSizes(svgFlagsArray, config.orientation, config.offset);
   const svgContent = generateSvgContent(svgFlagsArray, config.orientation, config.offset);
   return createSvgElement(width, height, svgContent);
 }
 
 function generateSvgContent(svgFlagsArray: string[], orientation: Orientation, offset: number): string {
-  return prepareSvgChildren(svgFlagsArray, orientation, offset).join('');
+  const namespaced = svgFlagsArray.map(namespaceSvgIds);
+  return prepareSvgChildren(namespaced, orientation, offset).join('');
 }
 
 function createSvgElement(width: number, height: number, content: string): string {

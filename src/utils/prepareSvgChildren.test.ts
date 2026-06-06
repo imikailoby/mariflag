@@ -4,6 +4,11 @@ import { prepareSvgChildren } from './prepareSvgChildren';
 const ELEMENTS = ['<svg width="48" height="48"/>', '<svg width="48" height="48"/>', '<svg width="48" height="48"/>'];
 
 describe('prepareSvgChildren()', () => {
+  it('overwrites x/y coordinates already present on an element', () => {
+    const result = prepareSvgChildren(['<svg x="999" y="999" width="48" height="48"/>'], 'horizontal', 16);
+    expect(result).toEqual(['<svg x="0" y="0" width="48" height="48"/>']);
+  });
+
   it('returns an array with SVG elements with a correct offset for the horizontal orientation', () => {
     const result = prepareSvgChildren(ELEMENTS, 'horizontal', DEFAULT_CONFIG.offset);
     expect(result).toEqual([
